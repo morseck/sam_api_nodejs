@@ -4,18 +4,19 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
       // define association here
-      models.User.belongsTo(models.CarteAcces)
+
+      //Un User a une et une seule CarteAcces (1...1)
+      models.User.belongsTo(models.CarteAcces);
+
+      //Un User peut faire avoir un ou plusieurs Articles (1...n )
+      models.User.hasMany(models.Article);
     }
   };
   User.init({
-    idgroupe: DataTypes.INTEGER,
+    //idgroupe: DataTypes.INTEGER,
     nom: DataTypes.STRING,
     prenom: DataTypes.STRING,
     password: DataTypes.STRING,

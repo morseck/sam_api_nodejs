@@ -11,6 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+    /*
+      TABLE ASSOCIATIVE "Groupe_Droit"
+       Un Groupe peut avoir un ou plusieurs Droit
+       Un Droit peut etre dans un ou plusieurs Groupe
+       Dans la table associative "Groupe_Droit"
+       (n...m)
+      */
       models.Groupe_Droit.hasMany(models.Groupe)
       models.Groupe_Droit.hasMany(models.Droit)
     }

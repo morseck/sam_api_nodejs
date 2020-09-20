@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Droit extends Model {
+  class Categorie extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,26 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
       /*
-        Un Droit peut etre dans un ou plusieurs Groupe
-        Un Groupe peut avoir un ou plusieurs Droit
-        Dans la table associative "Groupe_Droit"
+        Un article peut appartenir à une ou plusieur Categorie
+        Une Categorie peut contenir un ou plusieurs articles
+        Dans la table associative "Article_Categorie"
         (n...m)
        */
-      models.Droit.belongsToMany(models.Groupe, {
-        through: models.Groupe_Droit,
+      models.Categorie.belongsToMany(models.Article, {
+        through: models.Article_Categorie,
         foreignKey:{
           allowNull: false
         }
-      })
+      });
     }
   };
-  Droit.init({
-    nom_droit: DataTypes.STRING,
-    disponible: DataTypes.BOOLEAN
+  Categorie.init({
+    nom_categorie: DataTypes.STRING,
+    disponible_categorie: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'Droit',
+    modelName: 'Categorie',
   });
-  return Droit;
+  return Categorie;
 };

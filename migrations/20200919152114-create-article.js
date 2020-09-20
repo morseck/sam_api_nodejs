@@ -1,53 +1,68 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Articles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      /*idgroupe: {
+      idUser: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model: 'Groupes',
+          model: 'Users',
           key: 'id'
         }
-      },*/
-      nom: {
+      },
+      titre_article: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      prenom: {
+      contenu_article: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      password: {
+      attachment: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      isValide: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.BOOLEAN
       },
-      email: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      telephone: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      adresse: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      cni: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      disponible: {
+      date_publication: {
         allowNull: false,
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
+        type: Sequelize.DATE
+      },
+      type: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      source_article: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      references_article: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      tags_article: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      jaime_article: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      jaime_pas_article: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      disponible_article: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -60,6 +75,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Articles');
   }
 };

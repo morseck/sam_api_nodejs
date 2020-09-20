@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      /*
+        TABLE ASSOCIATIVE "CarteAcces_FeuillePointage"
+       Une CarteAccess peut etre dans une ou plusieurs FeuillePointage
+       Une FeuillePointage peut enregistrer une ou plusieurs CarteAcces
+       (n...m)
+      */
       models.CarteAcces_FeuillePointage.hasMany(models.CarteAcces)
       models.CarteAcces_FeuillePointage.hasMany(models.FeuillePointage)
     }

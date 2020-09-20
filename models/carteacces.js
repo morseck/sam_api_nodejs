@@ -11,18 +11,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //Une CarteAcces peut avoir un et un seul User (1...1)
       models.CarteAcces.hasOne(models.User, {
         foreignKey:{
           allowNull: false
         }
       });
 
+      //Une CarteAccess est dans une Seule Groupe (1...n)
       models.CarteAcces.belongsTo(models.Groupe, {
         foreignKey:{
           allowNull: false
         }
       });
 
+      /*
+        Une CarteAccess peut etre dans une ou plusieurs FeuillePointage
+        Une FeuillePointage peut enregistrer une ou plusieurs CarteAcces
+        Dans la table association "CarteAcces_FeuillePointage"
+        (n...m)
+       */
       models.CarteAcces.belongsToMany(models.FeuillePointage, {
         through: models.CarteAcces_FeuillePointage,
         foreignKey:{

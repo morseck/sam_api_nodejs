@@ -1,53 +1,44 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Reponses', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      /*idgroupe: {
+      idCommentaire: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model: 'Groupes',
+          model: 'Commentaires',
           key: 'id'
         }
-      },*/
-      nom: {
+      },
+      text_reponse: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      prenom: {
+      auteur_reponse: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      password: {
+      jaime_reponse: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
-      email: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      telephone: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      adresse: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      cni: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      disponible: {
+      jaime_pas_reponse: {
         allowNull: false,
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
+        type: Sequelize.INTEGER
+      },
+      signaler_reponse: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      is_sensurer_reponse: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -60,6 +51,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Reponses');
   }
 };
