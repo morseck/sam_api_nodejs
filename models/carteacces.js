@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       //Une CarteAcces peut avoir un et un seul User (1...1)
-      models.CarteAcces.hasOne(models.User, {
+      models.CarteAcces.belongsTo(models.User, {
         foreignKey:{
           allowNull: false
         }

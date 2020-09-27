@@ -44,7 +44,7 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING
       },
-      disponible: {
+      disponible_user: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: true

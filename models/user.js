@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       //Un User a une et une seule CarteAcces (1...1)
-      models.User.belongsTo(models.CarteAcces);
+      models.User.hasOne(models.CarteAcces);
 
       //Un User peut faire avoir un ou plusieurs Articles (1...n )
       models.User.hasMany(models.Article);
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     telephone: DataTypes.STRING,
     adresse: DataTypes.STRING,
     cni: DataTypes.STRING,
-    disponible: DataTypes.BOOLEAN
+    disponible_user: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'User',
